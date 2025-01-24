@@ -5,6 +5,9 @@ import com.microservice.product.models.entities.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import static com.microservice.product.utils.Constants.ACTIVE_STATUS;
+import static com.microservice.product.utils.Constants.INACTIVE_STATUS;
+
 @Mapper(componentModel = "spring", uses = CategoryMapper.class)
 public interface ProductMapper {
 
@@ -13,6 +16,6 @@ public interface ProductMapper {
 
     // Metodo encargado de Mapear el status del campo Product al ProductResponse
     default String mapStatus(Product product) {
-        return product.getStatus() ? "ACTIVE" : "INACTIVE";
+        return product.getStatus() ? ACTIVE_STATUS : INACTIVE_STATUS;
     }
 }
